@@ -1,0 +1,321 @@
+<%@LANGUAGE="VBSCRIPT"%>
+<!--#include file="Connections/connAvata.asp" -->
+<%
+Dim Tramitador
+Dim Tramitador_cmd
+Dim Tramitador_numRows
+
+Set Tramitador_cmd = Server.CreateObject ("ADODB.Command")
+Tramitador_cmd.ActiveConnection = MM_connAvata_STRING
+Tramitador_cmd.CommandText = "SELECT * FROM Tramitadores WHERE Activo=True ORDER BY Nombre" 
+Tramitador_cmd.Prepared = true
+
+Set Tramitador = Tramitador_cmd.Execute
+Tramitador_numRows = 0
+%>
+<%
+Dim Abonado__MMColParam
+Abonado__MMColParam = "1"
+If (Request.QueryString("Id") <> "") Then 
+  Abonado__MMColParam = Request.QueryString("Id")
+End If
+%>
+<%
+Dim Abonado
+Dim Abonado_numRows
+
+Set Abonado = Server.CreateObject("ADODB.Recordset")
+Abonado.ActiveConnection = MM_connAvata_STRING
+Abonado.Source = "SELECT Nombre, Apellido1, Apellido2 FROM Abonados WHERE Id = " + Replace(Abonado__MMColParam, "'", "''") + ""
+Abonado.CursorType = 0
+Abonado.CursorLocation = 2
+Abonado.LockType = 1
+Abonado.Open()
+
+Abonado_numRows = 0
+%>
+<%
+Dim MM_editAction
+MM_editAction = CStr(Request.ServerVariables("SCRIPT_NAME"))
+If (Request.QueryString <> "") Then
+  MM_editAction = MM_editAction & "?" & Server.HTMLEncode(Request.QueryString)
+End If
+
+' boolean to abort record edit
+Dim MM_abortEdit
+MM_abortEdit = false
+%>
+<%
+' IIf implementation
+Function MM_IIf(condition, ifTrue, ifFalse)
+  If condition = "" Then
+    MM_IIf = ifFalse
+  Else
+    MM_IIf = ifTrue
+  End If
+End Function
+%>
+<%
+If (CStr(Request("MM_insert")) = "form1") Then
+  If (Not MM_abortEdit) Then
+    ' execute the insert
+    Dim MM_editCmd
+
+    Set MM_editCmd = Server.CreateObject ("ADODB.Command")
+    MM_editCmd.ActiveConnection = MM_connAvata_STRING
+    MM_editCmd.CommandText = "INSERT INTO Siniestro (Representado, Nombre, DNIRepresentado, FechaNacRepresentado, Tramitador, CasoTipo, FechaAperturaExpediente, AbonadoMomentoSiniestro, CasoTipo2, [Fecha Siniestro], [Hora Siniestro], [Fecha Baja], [Fecha Alta], Laboral, [Desarrollo accidente], Lugar, Localidad, Circunstacias, Condicion, [Daños Vehiculo], [Daños Personales], [Firma carta abogado procurador], AsistenciaJuridica, CuantiaAsistenciaJuridica, Notas, Vehiculo, Matricula, Conductor, Tomador, [Nro Poliza], RefExpediente, Compañia, [Fecha poliza], [Fin poliza], EstimacionIndemnizacion, DiasImpeditivosValor, DiasNoImpeditivosValor, DiasHospitalizadosValor, Abonado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)" 
+    MM_editCmd.Prepared = true
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param1", 5, 1, -1, MM_IIF(Request.Form("Representado"), 1, 0)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param2", 202, 1, 250, Request.Form("NombreRepresentado")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param3", 202, 1, 15, Request.Form("DNIRepresentado")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param4", 135, 1, -1, MM_IIF(Request.Form("FecNacRepresentado"), Request.Form("FecNacRepresentado"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param5", 5, 1, -1, MM_IIF(Request.Form("Tramitador"), Request.Form("Tramitador"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param6", 5, 1, -1, MM_IIF(Request.Form("CasoTipo"), Request.Form("CasoTipo"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param7", 135, 1, -1, MM_IIF(Request.Form("FechaApertiraExpediente"), Request.Form("FechaApertiraExpediente"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param8", 5, 1, -1, MM_IIF(Request.Form("AbonadoMomentoSiniestro"), 1, 0)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param9", 5, 1, -1, MM_IIF(Request.Form("CasoTipo2"), Request.Form("CasoTipo2"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param10", 135, 1, -1, MM_IIF(Request.Form("Fecha_Siniestro"), Request.Form("Fecha_Siniestro"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param11", 135, 1, -1, MM_IIF(Request.Form("Hora_Siniestro"), Request.Form("Hora_Siniestro"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param12", 135, 1, -1, MM_IIF(Request.Form("Fecha_Baja"), Request.Form("Fecha_Baja"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param13", 135, 1, -1, MM_IIF(Request.Form("Fecha_Alta"), Request.Form("Fecha_Alta"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param14", 5, 1, -1, MM_IIF(Request.Form("Laboral"), 1, 0)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param15", 203, 1, 1073741823, Request.Form("Desarrollo_accidente")) ' adLongVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param16", 202, 1, 100, Request.Form("Lugar")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param17", 202, 1, 50, Request.Form("Localidad")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param18", 203, 1, 1073741823, Request.Form("Circunstacias")) ' adLongVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param19", 202, 1, 50, Request.Form("Condicion")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param20", 202, 1, 200, Request.Form("Daos_Vehiculo")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param21", 202, 1, 200, Request.Form("Daos_Personales")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param22", 5, 1, -1, MM_IIF(Request.Form("Firma_carta_abogado_procurador"), 1, 0)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param23", 5, 1, -1, MM_IIF(Request.Form("AJuridica"), 1, 0)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param24", 5, 1, 255, MM_IIF(Request.Form("CAJuridica"), Request.Form("CAJuridica"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param25", 203, 1, 1073741823, Request.Form("Notas")) ' adLongVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param26", 202, 1, 50, Request.Form("Veliculo")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param27", 202, 1, 50, Request.Form("Matricula")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param28", 202, 1, 50, Request.Form("Conductor")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param29", 202, 1, 200, Request.Form("Tomador")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param30", 202, 1, 50, Request.Form("NPoliza")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param31", 202, 1, 50, Request.Form("RExpediente")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param32", 202, 1, 50, Request.Form("Compania")) ' adVarWChar
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param33", 135, 1, -1, MM_IIF(Request.Form("FPoliza"), Request.Form("FPoliza"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param34", 135, 1, -1, MM_IIF(Request.Form("FinPoliza"), Request.Form("FinPoliza"), null)) ' adDBTimeStamp
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param35", 5, 1, -1, MM_IIF(Request.Form("EstimacionIndemnizacion"), Request.Form("EstimacionIndemnizacion"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param36", 5, 1, -1, MM_IIF(Request.Form("DiaImpeditivo"), Request.Form("DiaImpeditivo"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param37", 5, 1, -1, MM_IIF(Request.Form("DiaNoImpedivo"), Request.Form("DiaNoImpedivo"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param38", 5, 1, -1, MM_IIF(Request.Form("Diahospital"), Request.Form("Diahospital"), null)) ' adDouble
+    MM_editCmd.Parameters.Append MM_editCmd.CreateParameter("param39", 5, 1, -1, MM_IIF(Request.Form("Abonado"), Request.Form("Abonado"), null)) ' adDouble
+    MM_editCmd.Execute
+    MM_editCmd.ActiveConnection.Close
+
+    ' append the query string to the redirect URL
+    Dim MM_editRedirectUrl
+    MM_editRedirectUrl = "Cliente.asp"
+    If (Request.QueryString <> "") Then
+      If (InStr(1, MM_editRedirectUrl, "?", vbTextCompare) = 0) Then
+        MM_editRedirectUrl = MM_editRedirectUrl & "?" & Request.QueryString
+      Else
+        MM_editRedirectUrl = MM_editRedirectUrl & "&" & Request.QueryString
+      End If
+    End If
+    Response.Redirect(MM_editRedirectUrl)
+  End If
+End If
+%>
+<html>
+<head>
+<title>A&ntilde;adir Siniestro</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+//-->
+</script>
+<style>
+  .imagenNO {display:none;}
+  .imagen {display:block;}
+</style>
+</head>
+<body bgcolor="#FFFFFF" text="#000000" topmargin="25">
+<script language="JavaScript" src="menu.js"></script>
+<script language="javascript">
+function insertarcita() {
+//alert("hola");
+//window.open("AgendaInsertarRapida.asp?Fecha=<%=DateAdd("D",0,DateAdd("D",10,Date()))%>&Cita=Mirar si estan metidos todos los datos de <%=(Abonado.Fields.Item("Nombre").Value)&" "&(Abonado.Fields.Item("Apellido1").Value)&" "&(Abonado.Fields.Item("Apellido2").Value)%>");
+//alert("hola2");
+}
+</script>
+<form method="POST" action="<%=MM_editAction%>" name="form1" onSubmit="javascript:insertarcita();">
+  <p> 
+    <input name="Representado" type="checkbox" id="Representado" value="checkbox" onClick="if (form1.Representado.checked==false) window.desc.className='imagenNO'; else window.desc.className='imagen';">
+    Siniestro representado (contrato a menores, familiar, etc.)<br>
+  <div class="imagenNO" id="desc"> Nombre: 
+    <input name="NombreRepresentado" type="text" id="NombreRepresentado" size="60" maxlength="250">
+    DNI: 
+    <input name="DNIRepresentado" type="text" id="DNIRepresentado" size="15" maxlength="15">
+    Fecha de nacimiento: 
+    <input name="FecNacRepresentado" type="text" id="FecNacRepresentado">
+  </div></p>
+  <table align="center">
+    <tr valign="baseline"> 
+      <td align="right" nowrap>Tramitador:</td>
+      <td> <select name="Tramitador" id="Tramitador">
+          <%
+While (NOT Tramitador.EOF)
+%>
+          <option value="<%=(Tramitador.Fields.Item("Id").Value)%>" <%If (Not isNull("1")) Then If (CStr(Tramitador.Fields.Item("Id").Value) = CStr("1")) Then Response.Write("SELECTED") : Response.Write("")%> ><%=(Tramitador.Fields.Item("Nombre").Value)%></option>
+          <%
+  Tramitador.MoveNext()
+Wend
+If (Tramitador.CursorType > 0) Then
+  Tramitador.MoveFirst
+Else
+  Tramitador.Requery
+End If
+%>
+        </select></td>
+      <td align="right">Caso Tipo: </td>
+      <td><select name="CasoTipo" id="CasoTipo">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select></td>
+      <td rowspan="2" align="right" nowrap>Fecha de apertura:</td>
+      <td rowspan="2"> <input name="FechaApertiraExpediente" type="text" id="FechaApertiraExpediente" value="<%=date()%>" size="32"></td>
+    </tr>
+    <tr valign="baseline">
+      <td align="right" nowrap>Abonado en el momento del siniestro: </td>
+      <td><input name="AbonadoMomentoSiniestro" type="checkbox" id="AbonadoMomentoSiniestro" value="checkbox"></td>
+      <td align="right">Caso Tipo cont:</td>
+      <td><select name="CasoTipo2" id="CasoTipo2">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Fecha Siniestro:</td>
+      <td colspan="3"> <input type="text" name="Fecha_Siniestro" value="" size="32"> </td>
+      <td align="right" nowrap>Hora Siniestro:</td>
+      <td><input type="text" name="Hora_Siniestro" value="" size="32"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Fecha Baja:</td>
+      <td colspan="3"> <input type="text" name="Fecha_Baja" value="" size="32"> </td>
+      <td align="right" nowrap>Fecha Alta:</td>
+      <td><input type="text" name="Fecha_Alta" value="" size="32"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Accidente Laboral:</td>
+      <td colspan="5"><input name="Laboral" type="checkbox" id="Laboral" value="checkbox"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Desarrollo accidente:</td>
+      <td colspan="5"> <input type="text" name="Desarrollo_accidente" value="" size="100%">      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Lugar:</td>
+      <td colspan="5"> <input name="Lugar" type="text" value="" size="100%"> </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Localidad:</td>
+      <td colspan="5"><input name="Localidad" type="text" id="Localidad" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Circunstacias:</td>
+      <td colspan="5"> <input type="text" name="Circunstacias" value="" size="100%">      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Condici&oacute;n:</td>
+      <td colspan="5"> <input name="Condicion" type="text" id="Condicion" size="100%">      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Daños Vehiculo:</td>
+      <td colspan="5"> <input type="text" name="Daos_Vehiculo" value="" size="100%">      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Daños Personales:</td>
+      <td colspan="5"> <input type="text" name="Daos_Personales" value="" size="100%">      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">&nbsp;</td>
+      <td colspan="3">Firma carta abogado procurador: <input type="checkbox" name="Firma_carta_abogado_procurador" value=1 >      </td>
+      <td>Asistencia Juridica: 
+        <input name="AJuridica" type="checkbox" id="AJuridica" value="checkbox"></td>
+      <td>Cuantia Asistencia Juridica: 
+        <input name="CAJuridica" type="text" id="CAJuridica"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td align="right" valign="top" nowrap>Notas:</td>
+      <td colspan="5"> <textarea name="Notas" cols="100%"></textarea>      </td>
+    </tr>
+    <tr valign="baseline"> 
+      <td colspan="6" align="right" nowrap><div align="left"><u><strong>Datos 
+          del vehiculo:</strong></u></div></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Vehiculo:</td>
+      <td colspan="5"><input name="Veliculo" type="text" id="Veliculo" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Matricula:</td>
+      <td colspan="5"><input name="Matricula" type="text" id="Matricula" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Conductor:</td>
+      <td colspan="5"><input name="Conductor" type="text" id="Conductor" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Tomador:</td>
+      <td colspan="5"><input name="Tomador" type="text" id="Tomador" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Nro Poliza::</td>
+      <td colspan="5"><input name="NPoliza" type="text" id="NPoliza" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Ref Expediente:</td>
+      <td colspan="5"><input name="RExpediente" type="text" id="RExpediente" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Compa&ntilde;ia:</td>
+      <td colspan="5"><input name="Compania" type="text" id="Compania" size="100%"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Fecha poliza:</td>
+      <td colspan="5"><input name="FPoliza" type="text" id="FPoliza" size="10"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Fin Poliza:</td>
+      <td colspan="5"><input name="FinPoliza" type="text" id="FinPoliza" size="10"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">Estimacion de indemnizacion:</td>
+      <td colspan="5"><input name="EstimacionIndemnizacion" type="text" id="EstimacionIndemnizacion" value="0" size="10">
+      <input name="DiaImpeditivo" type="hidden" id="DiaImpeditivo" value="49.03">
+      <input name="DiaNoImpedivo" type="hidden" id="DiaNoImpedivo" value="26.40">
+      <input name="Diahospital" type="hidden" id="Diahospital" value="60.34"></td>
+    </tr>
+    <tr valign="baseline"> 
+      <td nowrap align="right">&nbsp;</td>
+      <td colspan="5"> <input type="submit" value="Insertar registro"> </td>
+    </tr>
+  </table>
+  <input type="hidden" name="MM_insert" value="form1">
+  <input type="hidden" name="Abonado" value="<%=Request("Id")%>">
+</form>
+</body>
+</html>
+<%
+Tramitador.Close()
+Set Tramitador = Nothing
+%>
+<%
+Abonado.Close()
+Set Abonado = Nothing
+%>

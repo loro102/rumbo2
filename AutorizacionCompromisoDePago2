@@ -1,0 +1,224 @@
+<%@Language="VBSCRIPT" CodePage="1252"%>
+<!--#include file="Connections/connrumbo.asp" -->
+<!--#include file="general.asp" -->
+<%
+Dim Siniestro__MMColParam
+Siniestro__MMColParam = "1"
+If (Request.QueryString("Siniestro") <> "") Then 
+  Siniestro__MMColParam = Request.QueryString("Siniestro")
+End If
+%>
+<%
+Dim Siniestro
+Dim Siniestro_numRows
+
+Set Siniestro = Server.CreateObject("ADODB.Recordset")
+Siniestro.ActiveConnection = MM_connrumbo_STRING
+Siniestro.Source = "SELECT * FROM Siniestro WHERE Id = " + Replace(Siniestro__MMColParam, "'", "''") + ""
+Siniestro.CursorType = 0
+Siniestro.CursorLocation = 2
+Siniestro.LockType = 1
+Siniestro.Open()
+
+Siniestro_numRows = 0
+%>
+<%
+Dim Abonado__MMColParam
+Abonado__MMColParam = "1"
+If (Request.QueryString("Abonado") <> "") Then 
+  Abonado__MMColParam = Request.QueryString("Abonado")
+End If
+%>
+<%
+Dim Abonado
+Dim Abonado_numRows
+
+Set Abonado = Server.CreateObject("ADODB.Recordset")
+Abonado.ActiveConnection = MM_connrumbo_STRING
+Abonado.Source = "SELECT * FROM Abonados WHERE Id = " + Replace(Abonado__MMColParam, "'", "''") + ""
+Abonado.CursorType = 0
+Abonado.CursorLocation = 2
+Abonado.LockType = 1
+Abonado.Open()
+
+Abonado_numRows = 0
+%>
+<%
+Dim Profesional__MMColParam
+Profesional__MMColParam = "1"
+If (Request.QueryString("Profesional") <> "") Then 
+  Profesional__MMColParam = Request.QueryString("Profesional")
+End If
+%>
+<%
+Dim Profesional
+Dim Profesional_numRows
+
+Set Profesional = Server.CreateObject("ADODB.Recordset")
+Profesional.ActiveConnection = MM_connrumbo_STRING
+Profesional.Source = "SELECT Profesionales.*, TipoProfesional.AutorizacionCompromiso  FROM Profesionales, TipoProfesional  WHERE Profesionales.ID = " + Replace(Profesional__MMColParam, "'", "''") + " and Profesionales.Tipo=TipoProfesional.Id"
+Profesional.CursorType = 0
+Profesional.CursorLocation = 2
+Profesional.LockType = 1
+Profesional.Open()
+
+Profesional_numRows = 0
+%>
+
+<%
+'abogados
+Dim abogado
+Dim abogado_cmd
+Dim abogado_numRows
+
+Set abogado_cmd = Server.CreateObject ("ADODB.Command")
+abogado_cmd.ActiveConnection = MM_connrumbo_STRING
+abogado_cmd.CommandText = "SELECT * FROM tramitadores WHERE Id = ?" 
+abogado_cmd.Prepared = true
+abogado_cmd.Parameters.Append abogado_cmd.CreateParameter("param1", 5, 1, -1, abogado__MMColParam) ' adDouble
+
+Set abogado = abogado_cmd.Execute
+abogado_numRows = 0
+%>
+<%
+Dim aseguradora__MMColParam
+aseguradora__MMColParam = Siniestro.Fields.Item("Compañia").Value
+If (Request("MM_EmptyValue") <> "") Then 
+  aseguradora__MMColParam = Request("MM_EmptyValue")
+End If
+%>
+<%
+Dim aseguradora
+Dim aseguradora_cmd
+Dim aseguradora_numRows
+
+Set aseguradora_cmd = Server.CreateObject ("ADODB.Command")
+aseguradora_cmd.ActiveConnection = MM_connrumbo_STRING
+aseguradora_cmd.CommandText = "SELECT * FROM Aseguradoras WHERE aseguradora LIKE ?" 
+aseguradora_cmd.Prepared = true
+aseguradora_cmd.Parameters.Append aseguradora_cmd.CreateParameter("param1", 200, 1, 255, "%" + aseguradora__MMColParam + "%") ' adVarChar
+
+Set aseguradora = aseguradora_cmd.Execute
+aseguradora_numRows = 0
+%>
+<%
+<!--Muestra la fecha en orden correcto -->
+
+' Guardamos la fecha en la variable fecha
+fecha = date()
+' Guardamos el dia, mes y año en variables
+dia=day(fecha)
+mes=month(fecha)
+ano=year(fecha)
+'damos formato a la fecha dentro de fechaespanol
+fechaespanol=dia&"/"&mes&"/"&ano
+dim fso,b
+set fso=Server.CreateObject("Scripting.FileSystemObject")
+'set b=fso.OpenTextFile("C:\Documentos\Plantilla\"+request.QueryString("Doc")+".rtf",1,false,0)
+set b=fso.OpenTextFile((CarpetaDocumentos)+request.QueryString("Doc")+".rtf",1,false,0)
+' b=f.OpenAsTextStream(1,0)
+a=b.ReadAll()
+
+'response.Write(Siniestro.Fields.Item("Fecha Siniestro").Value)
+if (Siniestro.Fields.Item("Representado").Value=true) then 
+	a=replace(a,"--==NOMBRE==--",(Siniestro.Fields.Item("Nombre").Value)&" representado por "&(Abonado.Fields.Item("Nombre").Value)&" "&(Abonado.Fields.Item("Apellido1").Value)&" "&(Abonado.Fields.Item("Apellido2").Value))
+else
+	a=replace(a,"--==NOMBRE==--",(Abonado.Fields.Item("Nombre").Value)&" "&(Abonado.Fields.Item("Apellido1").Value)&" "&(Abonado.Fields.Item("Apellido2").Value))
+end if
+a=replace(a,"--==DNI==--",(Abonado.Fields.Item("NIF").Value))
+if not(Siniestro.Fields.Item("Fecha Siniestro").Value="") then 
+	a=replace(a,"--==FECHASINIESTRO==--",Siniestro.Fields.Item("Fecha Siniestro").Value)
+end if
+a=replace(a,"--==DIRECCION==--",Abonado.Fields.Item("Direccion").Value)
+if (Abonado.Fields.Item("Codigo Postal").Value="")or(isNull(Abonado.Fields.Item("Codigo Postal").Value)) then 
+	a=replace(a,"--==CODIGOPOSTAL==--"," ")
+else
+	a=replace(a,"--==CODIGOPOSTAL==--",Abonado.Fields.Item("Codigo Postal").Value)
+end if
+a=replace(a,"--==LOCALIDAD==--",Abonado.Fields.Item("Localidad").Value)
+a=replace(a,"--==PROVINCIA==--",Abonado.Fields.Item("Provincia").Value)
+if (Abonado.Fields.Item("Telefono 3").Value="")or(isNull(Abonado.Fields.Item("Telefono 3").Value)) then 
+	a=replace(a,"--==TELEFONO==--"," ")
+else
+	a=replace(a,"--==TELEFONO==--",Abonado.Fields.Item("Telefono 3").Value)
+end if
+'a=replace(a,"--==HOYCORTO==--",date())
+a=replace(a,"--==HOYCORTO==--",(fechaespanol))
+a=replace(a,"--==HOY==--",FormatDateTime(Now,1))
+'Esta parte sirve para rellenar el documento de abogado
+
+
+'Fin del relleno de documento abogado
+a=replace(a,"--==CLINICA==--",(Profesional.Fields.Item("Nombre").Value))
+a=replace(a,"--==CLINICADOMICILIO==--",(Profesional.Fields.Item("Direccion").Value))
+a=replace(a,"--==CLINICACP==--",(Profesional.Fields.Item("CP").Value))
+a=replace(a,"--==CLINICALOCALIDAD==--",(Profesional.Fields.Item("Ciudad").Value))
+a=replace(a,"--==CLINICAPROVINCIA==--",(Profesional.Fields.Item("Provincia").Value))
+a=replace(a,"--==CLINICACITA==--",(Profesional.Fields.Item("Telefono1").Value))
+a=replace(a,"--==ESPECIALIDAD==--",(Profesional.Fields.Item("Especialidad").Value))
+a=replace(a,"--==EMPRESA==--",(GeneralEmpresa))
+a=replace(a,"--==EMPRESACIF==--",(GeneralCIF))
+a=replace(a,"--==EMPRESADOMICILIO==--",(GeneralDomicilioEmpresa))
+a=replace(a,"--==GERENTE==--",(GeneralGerente))
+a=replace(a,"--==GERENTENIF==--",(GeneralGerenteNIF))
+a=replace(a,"--==GERENTEDOMICILIO==--",(GeneralGerenteDomicilio))
+'Relleno de abogado
+
+'response.Write(a)
+a=replace(a,"á","\'e1")
+a=replace(a,"é","\'e9")
+a=replace(a,"í","\'ed")
+a=replace(a,"ó","\'f3")
+a=replace(a,"ú","\'fa")
+a=replace(a,"Ã¡","\'e1")'á
+a=replace(a,"Ã©","\'e9")'é
+a=replace(a,"Ã­","\'ed")'í
+a=replace(a,"Ã³","\'f3")'ó
+a=replace(a,"Ãº","\'fa")'ú
+a=replace(a,"Ã±","\'f1")'ñ
+a=replace(a,"Ã‘","\'d1")'ñ
+a=replace(a,"Âº","\ba")'º
+a=replace(a,"â‚¬","\'80")'€
+a=replace(a,"Ã","\'c1")'Á
+a=replace(a,"Ã‰","\'c9")'É
+a=replace(a,"Ã","\'cd")'Í
+a=replace(a,"Ã“","\'d3")'Ó
+a=replace(a,"Ãš","\'da")'Ú
+'a=replace(a,"","\aa")'ª
+if (not fso.FolderExists(Carpeta_clientes&(Siniestro.Fields.Item("Id").Value))) then
+	Response.ContentType="application/vnd.ms-word"
+	Response.AddHeader "content-disposition", "inline; filename=Autorizacion y compromiso.rtf"
+	'Response.AddHeader "content-disposition", "inline; filename=Autorizacion y compromiso "&(Profesional.Fields.Item("Nombre").Value)&".rtf"
+	response.Write(a)
+else
+	Set objTextStream = fso.OpenTextFile(Carpeta_clientes&(Siniestro.Fields.Item("Id").Value)&"\AC "&(Profesional.Fields.Item("Nombre").Value)&" "&replace(date(),"/","-")&".rtf", 2, True)
+	objTextStream.write(a)
+	objTextStream.close
+%>
+<html>
+<body>
+<script language="javascript">
+window.open('<%=Ruta_red&(Siniestro.Fields.Item("Id").Value)&"/AC "&(Profesional.Fields.Item("Nombre").Value)&" "&replace(date(),"/","-")&".rtf"%>');
+window.location=('Siniestro.asp?Id=<%=(Siniestro.Fields.Item("Id").Value)%>&Capa=<%request.QueryString("Capa")%>');
+window.location='<%=Ruta_red&(Siniestro.Fields.Item("Id").Value)&"/AC "&(Profesional.Fields.Item("Nombre").Value)&" "&replace(date(),"/","-")&".rtf"%>';
+</script>
+</body>
+</html>
+<%End If%>
+<%
+Siniestro.Close()
+Set Siniestro = Nothing
+%>
+<%
+Abonado.Close()
+Set Abonado = Nothing
+%>
+<%
+Profesional.Close()
+Set Profesional = Nothing
+%>
+<%
+aseguradora.Close()
+Set aseguradora = Nothing
+%>
+

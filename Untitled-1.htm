@@ -1,0 +1,21 @@
+<? include('global.php'); ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento sin t&iacute;tulo</title>
+</head>
+
+<body>
+<script language="javascript">
+function busca() {
+a=window.open();
+a.document.write('<form name="searchForm" method="post" action="http://www.correos.es/13/04/1010.asp"><input type="hidden" name="lista" value="no"><input type="hidden" name="city" size="25" class="FormObject" value="CARRIZO">');
+a.document.write('<input TYPE="hidden" NAME="exact" value="1"></form>Buscando codigo postal....');
+a.document.searchForm.submit();
+}
+</script>
+<img src="Imagenes/alerta.gif" onClick="busca()" width="19" height="19">
+</body>
+</html>
+

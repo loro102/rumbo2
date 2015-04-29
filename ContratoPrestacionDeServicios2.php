@@ -1,0 +1,94 @@
+<? include('global.php'); ?>
+<? // asp2php (vbscript) converted on Sat Apr 25 20:59:45 2015
+ ?>
+
+<? 
+header("Content-type: "."application/vnd.ms-word"); header("content-disposition".": "."inline; filename=InformeAnual.doc");
+
+$a="{\\rtf1\\ansi\\ansicpg1252\\uc1 \\deff0\\deflang3082\\deflangfe3082{\\fonttbl{\\f0\\froman\\fcharset0\\fprq2{\\*\\panose 02020603050405020304}Times New Roman;}{\\f2\\fmodern\\fcharset0\\fprq1{\\*\\panose 02070309020205020404}Courier New;}";
+$a=$a."{\\f3\\froman\\fcharset2\\fprq2{\\*\\panose 05050102010706020507}Symbol;}{\\f14\\fnil\\fcharset2\\fprq2{\\*\\panose 05000000000000000000}Wingdings;}{\\f28\\fswiss\\fcharset0\\fprq2{\\*\\panose 020b0402020204020303}Futura Lt BT;}";
+$a=$a."{\\f30\\froman\\fcharset0\\fprq2{\\*\\panose 02020404030301010803}Garamond;}{\\f36\\froman\\fcharset238\\fprq2 Times New Roman CE;}{\\f37\\froman\\fcharset204\\fprq2 Times New Roman Cyr;}{\\f39\\froman\\fcharset161\\fprq2 Times New Roman Greek;}";
+$a=$a."{\\f40\\froman\\fcharset162\\fprq2 Times New Roman Tur;}{\\f41\\froman\\fcharset177\\fprq2 Times New Roman (Hebrew);}{\\f42\\froman\\fcharset178\\fprq2 Times New Roman (Arabic);}{\\f43\\froman\\fcharset186\\fprq2 Times New Roman Baltic;}";
+$a=$a."{\\f52\\fmodern\\fcharset238\\fprq1 Courier New CE;}{\\f53\\fmodern\\fcharset204\\fprq1 Courier New Cyr;}{\\f55\\fmodern\\fcharset161\\fprq1 Courier New Greek;}{\\f56\\fmodern\\fcharset162\\fprq1 Courier New Tur;}{\\f57\\fmodern\\fcharset177\\fprq1 Courier New (Hebrew);}";
+$a=$a."{\\f58\\fmodern\\fcharset178\\fprq1 Courier New (Arabic);}{\\f59\\fmodern\\fcharset186\\fprq1 Courier New Baltic;}{\\f264\\fswiss\\fcharset162\\fprq2 Futura Lt BT Tur;}{\\f276\\froman\\fcharset238\\fprq2 Garamond CE;}{\\f277\\froman\\fcharset204\\fprq2 Garamond Cyr;}";
+$a=$a."{\\f279\\froman\\fcharset161\\fprq2 Garamond Greek;}{\\f280\\froman\\fcharset162\\fprq2 Garamond Tur;}{\\f283\\froman\\fcharset186\\fprq2 Garamond Baltic;}}{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;";
+$a=$a."\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;";
+$a=$a."\\red192\\green192\\blue192;}{\\stylesheet{\\ql \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 \\snext0 Normal;}{";
+$a=$a."\\s1\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs18\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 \\sbasedon0 \\snext0 heading 1;}{";
+$a=$a."\\s2\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs22\\ul\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 \\sbasedon0 \\snext0 heading 2;}{\\*\\cs10 \\additive Default Paragraph Font;}{";
+$a=$a."\\s15\\qc \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs32\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 \\sbasedon0 \\snext15 Title;}}{\\*\\listtable{\\list\\listtemplateid492308190\\listhybrid{\\listlevel\\levelnfc23";
+$a=$a."\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981953\\'01\\u-3913 ?;}{\\levelnumbers;}\\f3\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li1423\\jclisttab\\tx1423 }";
+$a=$a."{\\listlevel\\levelnfc0\\levelnfcn0\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981967\\'02\\'01.;}{\\levelnumbers\\'01;}\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li2143";
+$a=$a."\\jclisttab\\tx2143 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981957\\'01\\u-3929 ?;}{\\levelnumbers;}\\f14\\chbrdr\\brdrnone\\brdrcf1 ";
+$a=$a."\\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li2863\\jclisttab\\tx2863 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981953\\'01\\u-3913 ?;}{\\levelnumbers;}\\f3\\chbrdr";
+$a=$a."\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li3583\\jclisttab\\tx3583 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981955\\'01o;}{\\levelnumbers;}\\f2";
+$a=$a."\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li4303\\jclisttab\\tx4303 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981957";
+$a=$a."\\'01\\u-3929 ?;}{\\levelnumbers;}\\f14\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li5023\\jclisttab\\tx5023 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360\\levelindent0{\\leveltext";
+$a=$a."\\leveltemplateid201981953\\'01\\u-3913 ?;}{\\levelnumbers;}\\f3\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li5743\\jclisttab\\tx5743 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1\\levelspace360";
+$a=$a."\\levelindent0{\\leveltext\\leveltemplateid201981955\\'01o;}{\\levelnumbers;}\\f2\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li6463\\jclisttab\\tx6463 }{\\listlevel\\levelnfc23\\levelnfcn23\\leveljc0\\leveljcn0\\levelfollow0\\levelstartat1";
+$a=$a."\\levelspace360\\levelindent0{\\leveltext\\leveltemplateid201981957\\'01\\u-3929 ?;}{\\levelnumbers;}\\f14\\chbrdr\\brdrnone\\brdrcf1 \\chshdng0\\chcfpat1\\chcbpat1\\fbias0 \\fi-360\\li7183\\jclisttab\\tx7183 }{\\listname ;}\\listid552161318}}{\\*\\listoverridetable";
+$a=$a."{\\listoverride\\listid552161318\\listoverridecount0\\ls1}}{\\info{\\title     CONTRATO DE PRESTACION DE  SERVICIOS}{\\author rumbo}{\\operator rumbo}{\\creatim\\yr2003\\mo2\\dy25\\hr19\\min29}{\\revtim\\yr2003\\mo2\\dy25\\hr19\\min56}{\\printim\\yr2002\\mo10\\dy16\\hr11\\min37}";
+$a=$a."{\\version6}{\\edmins3}{\\nofpages2}{\\nofwords686}{\\nofchars3911}{\\*\\company q}{\\nofcharsws0}{\\vern8249}}\\paperw11906\\paperh16838\\margl1701\\margr1701\\margt540\\margb899 ";
+$a=$a."\\deftab708\\widowctrl\\ftnbj\\aenddoc\\hyphhotz425\\noxlattoyen\\expshrtn\\noultrlspc\\dntblnsbdb\\nospaceforul\\hyphcaps0\\formshade\\horzdoc\\dgmargin\\dghspace180\\dgvspace180\\dghorigin1701\\dgvorigin540\\dghshow1\\dgvshow1";
+$a=$a."\\jexpand\\viewkind1\\viewscale117\\viewzk2\\pgbrdrhead\\pgbrdrfoot\\splytwnine\\ftnlytwnine\\htmautsp\\nolnhtadjtbl\\useltbaln\\alntblind\\lytcalctblwd\\lyttblrtgr\\lnbrkrule \\fet0\\sectd \\linex0\\headery708\\footery708\\colsx708\\endnhere\\sectlinegrid360\\sectdefaultcl ";
+$a=$a."{\\*\\pnseclvl1\\pnucrm\\pnstart1\\pnindent720\\pnhang{\\pntxta .}}{\\*\\pnseclvl2\\pnucltr\\pnstart1\\pnindent720\\pnhang{\\pntxta .}}{\\*\\pnseclvl3\\pndec\\pnstart1\\pnindent720\\pnhang{\\pntxta .}}{\\*\\pnseclvl4\\pnlcltr\\pnstart1\\pnindent720\\pnhang{\\pntxta )}}{\\*\\pnseclvl5";
+$a=$a."\\pndec\\pnstart1\\pnindent720\\pnhang{\\pntxtb (}{\\pntxta )}}{\\*\\pnseclvl6\\pnlcltr\\pnstart1\\pnindent720\\pnhang{\\pntxtb (}{\\pntxta )}}{\\*\\pnseclvl7\\pnlcrm\\pnstart1\\pnindent720\\pnhang{\\pntxtb (}{\\pntxta )}}{\\*\\pnseclvl8\\pnlcltr\\pnstart1\\pnindent720\\pnhang";
+$a=$a."{\\pntxtb (}{\\pntxta )}}{\\*\\pnseclvl9\\pnlcrm\\pnstart1\\pnindent720\\pnhang{\\pntxtb (}{\\pntxta )}}\\pard\\plain \\ql \\fi708\\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs36 ";
+$a=$a."CONTRATO DE PRESTACION DE  SERVICIOS }{\\b\\f28\\fs36 ";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\fs18 ";
+$a=$a."\\par \\par \\par }{\\f30\\fs22 --==NOMBRE==--, mayor de edad, con DNI --==DNI==--, en adelante }{\\b\\f30\\fs22 MANDANTE, }{\\f30\\fs22 con domicilio en --==DIRECCION==-- de --==LOCALIDAD==-- y con capacidad para contratar, contrata a }{\\b\\f30\\fs22 rumbo HISPANIA S.L, }{";
+$a=$a."\\f30\\fs22  con CIF }{\\b\\f30\\fs22  B-24456907}{\\f30\\fs22 , en adelante }{\\b\\f30\\fs22 MANDATARIO}{\\f30\\fs22 , y con domicilio en C/ Ordo\\'f1o II, 17 de Le\\'f3n, para la prestaci\\'f3n de los servicios que se especificar\\'e1n, oblig\\'e1";
+$a=$a."ndose ambas partes a las cl\\'e1usulas siguientes:\\par \\par Sobre el accidente de tr\\'e1fico ocurrido  el  --==FECHASINIESTRO==--.";
+$a=$a."\\par \\par }\\pard\\plain \\s1\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel0\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs18\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22\\ul PRIMERA";
+$a=$a."\\par }\\pard\\plain \\ql \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22 ";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 El presente contrato permanecer\\'e1 en vigor desde su firma hasta que el mandante reciba las indemnizaciones pertinentes por las personas responsables del evento.";
+$a=$a."\\par En caso de sentencia judicial donde se declare como responsable \\'fanico al mandante, sin derecho a percibir indemnizaciones, el presente contrato finalizar\\'e1 sin obligaciones para las partes.";
+$a=$a."\\par La rescisi\\'f3n unilateral del presente contrato, originar\\'e1 el abono de todos los gastos ocasionados hasta la fecha de dicha rescisi\\'f3n.";
+$a=$a."\\par \\par }\\pard\\plain \\s2\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel1\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs22\\ul\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {SEGUNDA";
+$a=$a."\\par }\\pard\\plain \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\b\\f28\\fs22 OBLIGACIONES DEL MANDATARIO}{\\b\\f30\\fs22 ";
+$a=$a."\\par \\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}}\\pard \\qj \\fi-360\\li1423\\ri0\\widctlpar\\jclisttab\\tx1423\\aspalpha\\aspnum\\faauto\\ls1\\adjustright\\rin0\\lin1423\\itap0 {\\f30\\fs22 Prestar asistencia jur\\'eddica, a trav\\'e9";
+$a=$a."s de profesionales especializados designados por el mandante; esta asistencia comprender\\'e1 la tramitaci\\'f3n del procedimiento hasta su finalizaci\\'f3n.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}Facilitar asistencia sanitaria en centros especializados; esta asistencia comprender\\'e1 todo lo necesario para la curaci\\'f3n o estabilizaci\\'f3";
+$a=$a."n de las lesiones del mandante, quedando a disposici\\'f3n de este, previa consulta de los especialistas, prescrito m\\'e9dicamente.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}Facilitar el transporte sanitario, prescrito m\\'e9dicamente a trav\\'e9s de veh\\'edculos apropiados a las necesidades del mandante.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandatario se compromete a realizar todas las actuaciones, ante cualquier organismo que proceda.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandatario se compromete  a informar, en cualquier momento, que el mandante  lo solicite el estado de su expediente, as\\'ed como las dudas que puedan surgirle.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandatario se compromete al pago de los gastos que originen la sanidad del mandante, siempre que no excedan de un 10   % de la indemnizaci\\'f3n que prevea rumbo HISPANIA, con un m\\'e1";
+$a=$a."ximo de 3000 \\'80 salvo petici\\'f3n expresa y acuerdo independiente. Caso de dicha petici\\'f3n y acuerdo se formular\\'e1 un contrato en el que figuren todos los t\\'e9rminos de dicho acuerdo.";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 ";
+$a=$a."\\par }\\pard\\plain \\s2\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel1\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs22\\ul\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {TERCERA";
+$a=$a."\\par }\\pard\\plain \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\b\\f28\\fs22 OBLIGACIONES DEL MANDANTE";
+$a=$a."\\par \\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}}\\pard \\qj \\fi-360\\li1423\\ri0\\widctlpar\\jclisttab\\tx1423\\aspalpha\\aspnum\\faauto\\ls1\\adjustright\\rin0\\lin1423\\itap0 {\\f30\\fs22 El mandante se obliga a ser veraz en las decla";
+$a=$a."raciones que realice, ya que en caso de quedar acreditada la falsedad de las mismas, se entender\\'e1 rescindido este contrato con la obligaci\\'f3n de abonar todos los gastos originados m\\'e1s el inter\\'e9s legal del dinero.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandante se compromete a comunicar al mandatario, cualquier notificaci\\'f3n relacionada con su caso.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandante dar\\'e1 su consentimiento al mandatario, para que todas las notificaciones  se realicen en la direcci\\'f3n que el mandatario designe.";
+$a=$a."\\par {\\listtext\\pard\\plain\\f3\\fs22 \\loch\\af3\\dbch\\af0\\hich\\f3 \\'b7\\tab}El mandante abonar\\'e1 las facturas adelantadas por el mandatario, siempre y cuando se haga efectiva una indemnizaci\\'f3n, ya sea parcial o total.";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 ";
+$a=$a."\\par \\par \\par \\par }\\pard\\plain \\s1\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel0\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs18\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22\\ul CUARTA  ";
+$a=$a."\\par }{\\fs22  \\par }\\pard\\plain \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\f30\\fs22 El precio de los servicios enumerados ser\\'e1:";
+$a=$a."\\par \\par . Si el mandante no tiene una p\\'f3liza que le cubra el riesgo de Asistencia Jur\\'eddica: hasta el 10 % , m\\'e1s los gastos de procurador, si su intervenci\\'f3n hubiera sido necesaria.";
+$a=$a."\\par \\par . Si el mandante tiene una p\\'f3liza que le cubra el riesgo de Asistencia Jur\\'eddica en cuant\\'eda inferior al mencionado 10 %: el precio ser\\'e1 el establecido en el apartado anterior, si bien rumbo H";
+$a=$a."ISPANIA, se compromete a realizar las gestiones necesarias para el cumplimiento de la p\\'f3liza, devolviendo al cliente el 50% de la cantidad.";
+$a=$a."\\par \\par . Si el mandante tiene una p\\'f3liza que le cubra el riesgo de Asistencia Jur\\'eddica en cuant\\'eda superior al mencionado 10 %:rumbo HISPANIA cobrar\\'e1 al cliente hasta el 5%, m\\'e1";
+$a=$a."s los gastos de Abogado y Procurador, si bien rumbo HISPANIA se compromete a realizar las gestiones necesarias para el cumplimiento de la p\\'f3liza.";
+$a=$a."\\par \\par }\\pard\\plain \\s1\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel0\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs18\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22\\ul QUINTA";
+$a=$a."\\par }\\pard\\plain \\ql \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22 ";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 La intervenci\\'f3n de terceras personas no autorizadas por el mandatario, dar\\'e1 motivo a la cancelaci\\'f3n de este contrato con la obligaci\\'f3";
+$a=$a."n de abonar todos los gastos originados m\\'e1s el inter\\'e9s legal del dinero.";
+$a=$a."\\par \\par }\\pard\\plain \\s1\\qj \\li0\\ri0\\keepn\\widctlpar\\aspalpha\\aspnum\\faauto\\outlinelevel0\\adjustright\\rin0\\lin0\\itap0 \\b\\f28\\fs18\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22\\ul SEXTA";
+$a=$a."\\par }\\pard\\plain \\ql \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 \\fs24\\lang3082\\langfe3082\\cgrid\\langnp3082\\langfenp3082 {\\fs22 ";
+$a=$a."\\par }\\pard \\qj \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 Con expresa renuncia de su fuero y domicilio, las partes se someten a la jurisdicci\\'f3n de los Juzgados de Le\\'f3n para toda cuesti\\'f3";
+$a=$a."n que pueda surgir en la interpretaci\\'f3n de este contrato, que firman ambas partes:";
+$a=$a."\\par \\par En Le\\'f3n a --==HOY==--.\\par \\par \\par \\par \\par \\par \\par \\par \\par \\par \\par \\par \\par }\\pard \\qj \\li0\\ri0\\widctlpar\\tx4790\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 Fdo: --==NOMBRE==--.\\tab Fdo: Eva M\\'aa APARICIO APARICIO.";
+$a=$a."\\par }\\pard \\ql \\li70\\ri0\\widctlpar\\tx8710\\tx13026\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin70\\itap0 {\\f30\\fs18                                                                                                         ADMINISTRADORA DE rumbo HISPANIA}{";
+$a=$a."\\f30\\fs22 \\tab \\par \\tab \\par }\\pard \\ql \\li0\\ri0\\widctlpar\\aspalpha\\aspnum\\faauto\\adjustright\\rin0\\lin0\\itap0 {\\f30\\fs22 ";
+$a=$a."\\par }}";
+
+$a=str_replace("--==NOMBRE==--",$_GET["Nombre"],$a);
+$a=str_replace("--==DNI==--",$_GET["Nif"],$a);
+$a=str_replace("--==DIRECCION==--",$_GET["Direccion"],$a);
+$a=str_replace("--==LOCALIDAD==--",$_GET["Localidad"],$a);
+$a=str_replace("--==FECHASINIESTRO==--",$_GET["FechaSiniestro"],$a);
+$a=str_replace("--==HOY==--",$_GET["FechaApertura"],$a);
+print $a;
+?>

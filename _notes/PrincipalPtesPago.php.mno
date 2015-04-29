@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ptepago" value="name:Id;datatype:int,name:Nombre;datatype:string,name:Apellido1;datatype:string,name:Apellido2;datatype:string,name:Fecha Siniestro;datatype:date,name:FechaCobroCliente;datatype:date,name:FechaCierreExpediente;datatype:date,name:fesin;datatype:string,name:fecobcli;datatype:string,name:fecierreexp;datatype:string" />
+</info>

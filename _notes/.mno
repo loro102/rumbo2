@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="MM_Session_Count" value="10" />
+	<infoitem key="PageAccessControlMethod" value="useAccessList" />
+	<infoitem key="MM_URL_Count" value="0" />
+	<infoitem key="MM_Session1" value="MM_Username" />
+	<infoitem key="MM_Session2" value="MM_UserGroup" />
+	<infoitem key="MM_Session3" value="Ctramitadores" />
+	<infoitem key="MM_Session4" value="CBeneficio" />
+	<infoitem key="MM_Session5" value="CFacturas" />
+	<infoitem key="MM_Session6" value="CModsiniestros" />
+	<infoitem key="MM_Session7" value="CIndemnizacion" />
+	<infoitem key="MM_Session8" value="CVerFacturas" />
+	<infoitem key="MM_Session9" value="CControlFases" />
+	<infoitem key="MM_Session10" value="Modaseguradora" />
+</info>

@@ -1,0 +1,114 @@
+<? include('global.php'); ?>
+<script language="JScript">
+<!-- // DDMenu
+
+  var eOpenMenu = null;
+  function OpenMenu(eSrc,eMenu){
+    eMenu.style.left = eSrc.parentElement.offsetLeft + divMenuBar.offsetLeft;
+    eMenu.style.top = divMenuBar.offsetHeight + divMenuBar.offsetTop;
+    eMenu.style.visibility = "visible";
+    eOpenMenu = eMenu;
+  }
+
+  function CloseMenu(eMenu){
+    eMenu.style.visibility = "hidden";
+    eOpenMenu = null;
+  }
+
+  function MenuBar_over(){
+    var eSrc = window.event.srcElement;
+    if ("A" == eSrc.tagName.toUpperCase()){
+      var eMenu = document.all[eSrc.parentElement.id.replace("tdMenuBarItem","divMenu")];
+      if (eOpenMenu && eOpenMenu != eMenu){
+        CloseMenu(eOpenMenu);}
+      if (eMenu){
+		  OpenMenu(eSrc,eMenu);}
+    }
+  }
+
+  function MenuBar_out(){
+    var eTo = window.event.toElement;
+    if (eOpenMenu && eTo && !eOpenMenu.contains(eTo) && "tblMenuBar" != eTo.id){
+      CloseMenu(eOpenMenu)}
+	}
+
+  function Menu_out(){
+    var eSrc = window.event.toElement;
+    if (eOpenMenu && !eOpenMenu.contains(eSrc) && !divMenuBar.contains(eSrc)){
+      CloseMenu(eOpenMenu)}
+	}
+
+//-->
+</script>
+<style type="text/css">
+	BODY { font-family:"Verdana, Arial, Helvetica, sans-serif"; font-size:70%;}
+
+	DIV#divMenuBar { background-color:#00CC00; }
+	TABLE#tblMenuBar TD { font-size:60%; color:#FFFFFF; padding:0px 5px 0px 5px; cursor:default; }
+	TABLE#tblMenuBar TD.clsMenuBarItem { font-weight:bold; cursor:default; }
+
+	/* These two style rules added for links in MenuBar */
+	TABLE#tblMenuBar TD.clsMenuBarItem A { text-decoration:none; color:#000000; font-weight:bold; }
+	TABLE#tblMenuBar TD.clsMenuBarItem A:hover { color:#FFFFFF; }
+	DIV.clsMenu { 
+		font-size:90%; background-color:#00CC00;
+		position:absolute; visibility:hidden; width:130px; 
+		padding:5px 5px 5px 8px; border-top:1 white solid; 
+	}
+	DIV.clsMenu A { text-decoration:none; color:#000000; font-weight:bold; }
+	DIV.clsMenu A:hover { color:#FFFFFF; }
+</style>
+ <ddMenu> 
+<DIV ID="ddMenuLayer" STYLE="position:absolute; left:0px; top:0px; width:100%; height:35px; z-index:1"> 
+  <DIV ID="divMenuBar" ONMOUSEOVER="if (document.all) MenuBar_over();" ONMOUSEOUT="if (document.all) MenuBar_out();" ONSELECTSTART="return false;"> 
+    <TABLE ID="tblMenuBar" BORDER="0" WIDTH="100%">
+      <TR> 
+        <TD CLASS="clsMenuBarItem" ID="tdMenuBarItemPrincipal"> <A TARGET="" HREF="Principal.php">Principal</A> 
+        </TD>
+        <TD>|</TD>
+        <TD CLASS="clsMenuBarItem" ID="tdMenuBarItemAbonados"> <A TARGET="" HREF="#">Abonados</A> 
+        </TD>
+        <TD>|</TD>
+        <TD CLASS="clsMenuBarItem" ID="tdMenuBarItemDatos"> <A TARGET="" HREF="#">Datos</A> 
+        </TD>
+        <TD>|</TD>
+        <TD CLASS="clsMenuBarItem" ID="tdMenuBarItemListados"> <A TARGET="" HREF="#">Listados</A> 
+        </TD>
+        <TD>|</TD>
+        <TD CLASS="clsMenuBarItem" ID="tdMenuBarItemCitas"> <A TARGET="" HREF="#">Citas</A> 
+        </TD>
+        <TD>|</TD>
+        <TD WIDTH="100%">&nbsp;</TD>
+      </TR>
+    </TABLE>
+  </DIV>
+  <DIV CLASS="clsMenu" ONMOUSEOUT="Menu_out();" ID="divMenuAbonados"> 
+    <DIV CLASS="clsMenuSpacer"></DIV>
+    <DIV> <A TARGET="" HREF="ClienteBuscar.php">Buscar</A> </DIV>
+    <DIV> <A TARGET="" HREF="clienteNuevo.php">Insertar</A> </DIV>
+  </DIV>
+  <DIV CLASS="clsMenu" ONMOUSEOUT="Menu_out();" ID="divMenuDatos"> 
+    <DIV CLASS="clsMenuSpacer"></DIV>
+    <DIV> <A TARGET="" HREF="ClinicaInsertar.php">Insertar Clinica</A> </DIV>
+    <DIV> <A TARGET="" HREF="AmbulanciaInsertar.php">Insertar Ambulancia</A> </DIV>
+    <DIV> <A TARGET="" HREF="AbogadoInsertar.php">Insertar Abogado</A> </DIV>
+    <DIV> <A TARGET="" HREF="ClinicaRehabilitacionInsertar.php">Insertar Clinica 
+      Rehabilitacion</A> </DIV>
+    <DIV> <A TARGET="" HREF="MedicoInsertar.php">Insertar Medico</A> </DIV>
+    <DIV> <A TARGET="" HREF="ProcuradorInsertar.php">Insertar Procurador</A> </DIV>
+    <DIV> <A TARGET="" HREF="TaxiInsertar.php">Insertar Taxi</A> </DIV>
+    <DIV> <A TARGET="" HREF="TramitadorInsertar.php">Insertar Tramitador</A> </DIV>
+  </DIV>
+  <DIV CLASS="clsMenu" ONMOUSEOUT="Menu_out();" ID="divMenuListados"> 
+    <DIV CLASS="clsMenuSpacer"></DIV>
+    <DIV> <A TARGET="" HREF="FacturasListado.php">Facturas</A> </DIV>
+    <DIV> <A TARGET="" HREF="SiniestrosListar.php">Siniestros por profesional</A> 
+    </DIV>
+  </DIV>
+  <DIV CLASS="clsMenu" ONMOUSEOUT="Menu_out();" ID="divMenuCitas"> 
+    <DIV CLASS="clsMenuSpacer"></DIV>
+    <DIV> <A TARGET="" HREF="AgendaInsertar.php">Insertar Cita</A> </DIV>
+    <DIV> <A TARGET="" HREF="AgendaListar.php">Mostrar Citas</A> </DIV>
+  </DIV>
+</DIV>
+</ddmenu> 

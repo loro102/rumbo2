@@ -1,0 +1,1 @@
+document.writeln('<!--[if true]>\r\n<script language="JavaScript" src="menu1.js"><\/script>\r\n<![endif]-->\r\n\r\n<![if false]>\r\n <script language="JavaScript" src="menu2.js"><\/script>\r\n<![endif]>');

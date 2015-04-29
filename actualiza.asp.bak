@@ -1,0 +1,44 @@
+<%@LANGUAGE="VBSCRIPT" CODEPAGE="1252"%>
+<!--#include file="Connections/connAvata.asp" -->
+<%
+'set base = Server.CreateObject("ADODB.Recordset")
+'base.ActiveConnection = MM_connAvata_STRING
+'base.Source = "ALTER TABLE Siniestro ADD COLUMN FechaTalon DATETIME"
+'base.CursorType = 0
+'base.CursorLocation = 2
+'base.LockType = 3
+'base.Open()
+
+set base = Server.CreateObject("ADODB.Connection")
+base.open MM_connAvata_STRING
+'cadena = "CREATE TABLE Correspondecia(Id INT PRIMARY KEY,RecibidoEnviado INT NOT NULL DEFAULT 0,Origen CHAR(100),Destino CHAR(100),Contenido CHAR(200),Referencia INT NOT NULL DEFAULT 0)"
+'cadena = "CREATE TABLE Correspondecia(Id AUTOINCREMENT PRIMARY KEY,RecibidoEnviado INT NOT NULL,Origen CHAR(100),Destino CHAR(100),Contenido CHAR(200),Referencia INT NOT NULL, Fecha DATETIME)"
+'cadena="ALTER TABLE Siniestro ALTER COLUMN DiasImpeditivosValor DEFAULT(2)"
+'cadena="ALTER TABLE Siniestro ADD COLUMN FechaCobroCliente Date"
+'base.execute cadena
+'cadena="ALTER TABLE Agentes ADD COLUMN Pegatina BIT"
+'base.execute cadena
+'cadena="ALTER TABLE Agentes ADD COLUMN Portatriptico BIT"
+'base.execute cadena
+'cadena="ALTER TABLE Siniestro ADD COLUMN AsistenciaSanitaria FLOAT"
+'base.execute cadena
+'cadena="ALTER TABLE Siniestro ALTER COLUMN CuantiaAsistenciaJuridica TEXT"
+'base.execute cadena
+'cadena="ALTER TABLE Siniestro ADD COLUMN ContratoAbonado BIT"
+'base.execute cadena
+'cadena="ALTER TABLE Facturas ADD COLUMN ValorIndemnizacion FLOAT"
+'base.execute cadena
+'base.execute "UPDATE Facturas SET Facturas.ValorIndemnizacion = [Facturas]![Cuantia Avata]"
+'base.execute "ALTER TABLE Profesionales ADD COLUMN AcuerdoPago INT"
+'base.execute "UPDATE Profesionales SET Profesionales.AcuerdoPago = 0"
+'base.execute "ALTER TABLE Profesionales ADD COLUMN Especialidad TEXT"
+'base.execute "UPDATE Profesionales SET Especialidad = ''"
+'base.execute "ALTER TABLE Profesionales ADD COLUMN Homologado BIT"
+'base.execute "UPDATE Profesionales SET Homologado = True"
+
+base.execute "CREATE TABLE DocClientes(Id AUTOINCREMENT PRIMARY KEY,Texto CHAR(100), Entrada DATETIME,Salida DATETIME,Lugar MEMO,SiniestroId INT)"
+
+'base.execute "ALTER TABLE Siniestro ADD COLUMN UltimaVision DATE"
+base.close
+response.Redirect("Principal.asp")
+%>

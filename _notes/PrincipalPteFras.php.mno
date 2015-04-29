@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_ptefact" value="name:Id;datatype:int,name:Fecha Siniestro;datatype:date,name:Nombre;datatype:string,name:Apellido1;datatype:string,name:Apellido2;datatype:string,name:Fecha Alta;datatype:date,name:fechasin;datatype:string,name:fechaalta;datatype:string" />
+</info>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_finprocedimiento" value="name:Id;datatype:int,name:Fecha Siniestro;datatype:date,name:Nombre;datatype:string,name:Apellido1;datatype:string,name:Apellido2;datatype:string,name:Representado;datatype:int,name:RNombre;datatype:string,name:falta;datatype:int,name:fecha;datatype:string" />
+</info>
